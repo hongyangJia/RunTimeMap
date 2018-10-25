@@ -44,7 +44,6 @@ class Main2Activity : AppCompatActivity() {
 
         end.setOnClickListener {
             DataUtils.endLocation = map!!.endLocation()
-            Log.e("setOnClickListener", DataUtils.endLocation!!.toString())
             val v = Intent(this, EndActivity1::class.java)
             startActivity(v)
         }
