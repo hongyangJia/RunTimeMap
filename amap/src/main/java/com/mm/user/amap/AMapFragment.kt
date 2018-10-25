@@ -23,7 +23,7 @@ import com.mm.user.fastmap.info.MapMessage
 
     var onLocationListener: LocationSource.OnLocationChangedListener? = null
     val myLocationStyle = MyLocationStyle()
-
+    var isLocationRoute=false
     /**
      * 读取配置信息,定制配置任务
      */
@@ -40,6 +40,10 @@ import com.mm.user.fastmap.info.MapMessage
             //定义 跟随模式
             myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_FOLLOW);
             map.myLocationStyle = myLocationStyle
+        }
+
+        if (mapOptions.isLocationRoute){
+            isLocationRoute=true
         }
         //无效图标
         invalidSettings()
@@ -155,6 +159,7 @@ import com.mm.user.fastmap.info.MapMessage
             if (onLocationListener != null) {
                 //定位图标跟随高精度定位
                 onLocationListener!!.onLocationChanged(aMapLocation)
+                if (!isLocationRoute)return
                 val latLng = AMapToMessage.convertMessage(aMapLocation)
                 if (AMapPolylines.isDraw(latLng)) {
                     addPolygon(latLng)

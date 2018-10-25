@@ -14,7 +14,7 @@ object AMapToMessage {
      */
     fun convertMessage(aMapLocation: AMapLocation): MapMessage {
         val location = com.mm.user.fastmap.info.LatLng(aMapLocation.latitude, aMapLocation.longitude)
-        return MapMessage(location, aMapLocation.bearing, aMapLocation.speed, aMapLocation.time)
+        return MapMessage(location, aMapLocation.bearing, aMapLocation.speed, aMapLocation.time,aMapLocation.address)
     }
 
     /**

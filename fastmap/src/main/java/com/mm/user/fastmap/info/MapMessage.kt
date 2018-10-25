@@ -11,11 +11,13 @@ class MapMessage : Serializable {
     var bearing: Float = 0.0f
     var speed: Float = 0.0f
     var time: Long = 0
+    var address:String=""
 
-    constructor(latLng: LatLng, bearing: Float, speed: Float, time: Long) {
+    constructor(latLng: LatLng, bearing: Float, speed: Float, time: Long,address:String) {
         this.latLng = latLng
         this.bearing = bearing
         this.speed = speed
         this.time = time
+        this.address=address
     }
 }

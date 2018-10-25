@@ -14,7 +14,7 @@ import java.util.*
 /**
  * created by hongyang on 18-9-19
  */
-class AMapLocation:LocationSource {
+object AMapLocation:LocationSource {
 
     @SuppressLint("StaticFieldLeak")
     var mLocationClient: AMapLocationClient? = null
@@ -25,6 +25,9 @@ class AMapLocation:LocationSource {
      */
     val INTERVAL_TIME = 5000
 
+    fun newLocation():LocationSource{
+        return this
+    }
     /**
      * 配置基本定位信息
      */
@@ -81,7 +84,7 @@ class AMapLocation:LocationSource {
             if (aMapLocation.errorCode == 0) {
                 for (listener in locationListener) {
                     val latlngs = LatLng(aMapLocation.latitude,aMapLocation.longitude)
-                    listener.onLocation(MapMessage(latlngs,aMapLocation.bearing,aMapLocation.speed,aMapLocation.time))
+                    listener.onLocation(MapMessage(latlngs,aMapLocation.bearing,aMapLocation.speed,aMapLocation.time,aMapLocation.address))
                 }
             }
         }

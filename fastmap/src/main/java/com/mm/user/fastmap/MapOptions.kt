@@ -7,6 +7,7 @@ class MapOptions {
 
     var isLocationEnabled: Boolean = true
     var isLocationIcon: Boolean = true
+    var isLocationRoute:Boolean=false
     var zoomTo: Float = 0f
 
     private constructor() {
@@ -16,6 +17,7 @@ class MapOptions {
     constructor(builder: Builder) {
         isLocationEnabled = builder.isLocationEnabled
         isLocationIcon = builder.isLocationIcon
+        isLocationRoute = builder.isLocationRoute
         zoomTo = builder.zoomTo
     }
 
@@ -23,8 +25,8 @@ class MapOptions {
 
         var isLocationEnabled: Boolean = true
         var isLocationIcon: Boolean = true
+        var isLocationRoute:Boolean=false
         var zoomTo: Float = 0f
-
         /**
          * 设置显示定位图片
          */
@@ -38,6 +40,14 @@ class MapOptions {
          */
         fun isLocationIcon(isLocationIcon: Boolean): MapOptions.Builder {
             this.isLocationIcon = isLocationIcon
+            return this
+        }
+
+        /**
+         * 定位绘制路线
+         */
+        fun isLocationRoute(isLocationRoute: Boolean): MapOptions.Builder {
+            this.isLocationRoute = isLocationRoute
             return this
         }
 
